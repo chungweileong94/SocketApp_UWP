@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="SocketApp_UWP.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SocketApp_UWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:SocketApp_UWP.Models"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style x:Key="MessageBorderStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource SystemControlBackgroundAccentBrush}"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="Margin" Value="8,12"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="MaxWidth" Value="300"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <ListView ItemsSource="{x:Bind ViewModel.MessageCollection, Mode=OneWay}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <!--<ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Message">
+                        <TextBlock Text="{x:Bind message, Mode=OneWay}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>-->
+
+                <ListViewItem>
+                    <Border Style="{StaticResource MessageBorderStyle}">
+                        <TextBlock Text="Message 1" Foreground="White"/>
+                    </Border>
+                </ListViewItem>
+            </ListView>
+        </Grid>
+    </Grid>
+</Page>
